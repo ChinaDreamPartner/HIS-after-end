@@ -32,6 +32,7 @@ public class AdminService {
         return messageMapper.getMessages();
     }
     public void addMessage(arrangeMessage arrangeMessage) {
+        
         messageMapper.insert(arrangeMessage);
     }
 }
