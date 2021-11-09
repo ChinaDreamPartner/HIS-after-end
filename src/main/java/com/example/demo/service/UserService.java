@@ -12,6 +12,9 @@ public class UserService {
     @Autowired
     private UserMapper userMapper;
 
+    public void insert(User user) {
+        userMapper.insert(user);
+    }
     public User getUser(String name) {
         log.debug("2");
         return userMapper.getByUserName(name);

@@ -14,12 +14,12 @@ public class WebMvcConfiguration implements WebMvcConfigurer {
     @Autowired
     private LoginInterceptor loginInterceptor;
 
-    @Override
-    public void addInterceptors(InterceptorRegistry registry) {
-        registry.addInterceptor(loginInterceptor)
-                .addPathPatterns("/api/**")
-                .excludePathPatterns("/api/login");
-        registry.addInterceptor(adminInterceptor)
-                .addPathPatterns("/api/admin/**");
-    }
+//    @Override
+//    public void addInterceptors(InterceptorRegistry registry) {
+//        registry.addInterceptor(loginInterceptor)
+//                .addPathPatterns("/api/**")
+//                .excludePathPatterns("/api/login");
+//        registry.addInterceptor(adminInterceptor)
+//                .addPathPatterns("/api/admin/**");
+//    }
 }

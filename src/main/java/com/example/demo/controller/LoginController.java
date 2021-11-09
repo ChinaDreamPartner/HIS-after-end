@@ -28,9 +28,11 @@ public class LoginController {
     @PostMapping("login")
     public ResultVO login(@RequestBody User user, HttpServletResponse response){
         User u = userService.getUser(user.getUserName());
+        log.debug("{}",encoder.encode(u.getPassword()));
         if(u == null || !encoder.matches(user.getPassword(),u.getPassword())){
             return ResultVO.error(401,"用户名密码错误");
         }
+        log.debug("{}",encoder.encode(u.getPassword()));
         log.debug("{}\n{}",user.getPassword(),u.getPassword());
 //        userService.UserCache(u.getId());
         String token = encryptComponent.encrypt(Map.of("uid",u.getId(),"role",u.getRole()));

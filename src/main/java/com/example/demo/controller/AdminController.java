@@ -2,6 +2,8 @@ package com.example.demo.controller;
 
 import com.example.demo.VO.ResultVO;
 import com.example.demo.entity.TechnicalOffice;
+import com.example.demo.entity.User;
+import com.example.demo.entity.arrangeMessage;
 import com.example.demo.mapper.AdminMapper;
 import com.example.demo.service.AdminService;
 import io.swagger.annotations.Api;
@@ -44,5 +46,17 @@ public class AdminController {
     public ResultVO delete(@PathVariable long id) {
         adminService.delete(id);
         return ResultVO.success(Map.of());
+    }
+    @ApiOperation(value = "添加排班记录")
+    @PostMapping("addMessage")
+    public ResultVO addMessage(@RequestBody arrangeMessage arrangeMessage) {
+        adminService.addMessage(arrangeMessage);
+        return ResultVO.success(Map.of());
+    }
+    @ApiOperation(value = "查询排班记录")
+    @GetMapping("getMessages")
+    public ResultVO getMessages() {
+        List<arrangeMessage> t = adminService.getMessages();
+        return ResultVO.success(Map.of("messages", t));
     }
 }

@@ -1,6 +1,8 @@
 package com.example.demo.service;
 import com.example.demo.entity.TechnicalOffice;
+import com.example.demo.entity.arrangeMessage;
 import com.example.demo.mapper.AdminMapper;
+import com.example.demo.mapper.MessageMapper;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -12,6 +14,8 @@ import java.util.List;
 public class AdminService {
     @Autowired
     private AdminMapper adminMapper;
+    @Autowired
+    private MessageMapper messageMapper;
     public List<TechnicalOffice> getAll() {
         return adminMapper.getAllTechnicalOffice();
     }
@@ -23,5 +27,11 @@ public class AdminService {
     }
     public void delete(long id) {
         adminMapper.deleteById(id);
+    }
+    public List<arrangeMessage> getMessages() {
+        return messageMapper.getMessages();
+    }
+    public void addMessage(arrangeMessage arrangeMessage) {
+        messageMapper.insert(arrangeMessage);
     }
 }
